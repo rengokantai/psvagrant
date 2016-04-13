@@ -17,6 +17,11 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell",path: "provision.sh"
   config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx", auto_correct: true
 
+  #If want to disable
+  #config.vm.synced_folder "./", "/vagrant", disabled: true
+  config.vm.synced_folder "www", "/vagrant/www"
+  config.vm.synced_folder "sites-enabled", "/vagrant/sites-enabled"
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
